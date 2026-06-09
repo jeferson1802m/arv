@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | ARV Intelligence CRM</title>
+  <meta name="description" content="CRM de ARV Intelligence para gestionar clientes, conversaciones, ventas y automatizaciones por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/">
+      <span class="brand-mark">↯</span>
+      <span>ARV Intelligence</span>
+    </a>
+    <nav aria-label="Dashboard">
+      <a class="active" href="#overview">Panel</a>
+      <a href="#inbox">Conversaciones</a>
+      <a href="#pipeline">Ventas</a>
+      <a href="#contacts">Clientes</a>
+      <a href="#tasks">Tareas</a>
+      <a href="#reports">Reportes</a>
+      <a href="#automations">Automatizaciones</a>
+      <a href="#settings">Configuracion</a>
+    </nav>
+    <div class="pilot-card">
+      <span>Plan actual</span>
+      <strong>Inicial</strong>
+      <p>CRM, reportes y seguimiento basico.</p>
+      <button type="button">Mejorar plan</button>
+    </div>
+  </aside>
+
+  <main class="dashboard">
+    <header class="topbar">
+      <div>
+        <span class="crumb">CRM / WhatsApp Business</span>
+        <h1>Panel de atencion y ventas</h1>
+      </div>
+      <div class="top-actions">
+        <label class="search">
+          <span>Buscar</span>
+          <input type="search" placeholder="Cliente, telefono o pedido">
+        </label>
+        <button class="ghost" type="button">Exportar</button>
+        <button class="primary" type="button">Nuevo cliente</button>
+      </div>
+    </header>
+
+    <section class="metrics" id="overview" aria-label="Indicadores">
+      <article><span>Conversaciones hoy</span><strong data-metric="conversations">38</strong><small>12 pendientes</small></article>
+      <article><span>Clientes interesados</span><strong data-metric="leads">24</strong><small>8 requieren seguimiento</small></article>
+      <article><span>Ventas potenciales</span><strong>S/ 1,840</strong><small>Estimado del pipeline</small></article>
+      <article><span>Automatizacion</span><strong data-metric="automation">62%</strong><small>Consultas respondidas por flujo</small></article>
+    </section>
+
+    <section class="connection-card" id="connection">
+      <div>
+        <span class="label">Conexion del canal</span>
+        <h2>WhatsApp para el CRM</h2>
+        <p id="connectionDescription">Modo demo: simula el escaneo por QR y la recepcion de mensajes para validar el MVP sin conectar una cuenta real.</p>
+        <div class="mode-switch" aria-label="Modo de conexion">
+          <button class="active" type="button" data-mode="qr">Demo QR</button>
+          <button type="button" data-mode="evolution">Evolution API</button>
+          <button type="button" data-mode="api">Meta API</button>
+        </div>
+      </div>
+      <div class="qr-box" id="qrBox" aria-label="QR de conexion simulado">
+        <span></span><span></span><span></span><span></span><i></i>
+      </div>
+      <div class="connection-actions">
+        <strong id="connectionStatus">Desconectado</strong>
+        <small id="connectionHint">Escanea el QR de prueba para iniciar la sesion demo.</small>
+        <button class="primary" type="button" id="connectBtn">Simular conexion</button>
+        <button class="ghost" type="button" id="disconnectBtn">Desconectar</button>
+      </div>
+    </section>
+
+    <section class="panel evolution-panel" id="evolutionPanel">
+      <div class="panel-head">
+        <div>
+          <span class="label">Integracion real</span>
+          <h2>Evolution API</h2>
+        </div>
+        <span class="pill gray" id="evolutionStatus">Sin configurar</span>
+      </div>
+      <form class="evolution-form" id="evolutionForm">
+        <label>URL de Evolution
+          <input id="evolutionUrl" type="url" placeholder="https://whatsapp-evolution-api.449zu3.easypanel.host">
+        </label>
+        <label>Instancia
+          <input id="evolutionInstance" type="text" placeholder="Botrestaurante">
+        </label>
+        <label>API key
+          <input id="evolutionApiKey" type="password" placeholder="apikey">
+        </label>
+        <label>Numero para pairing, opcional
+          <input id="evolutionNumber" type="tel" placeholder="51987654321">
+        </label>
+        <button class="primary" type="submit">Guardar credenciales</button>
+      </form>
+      <p class="config-help">Usa la URL base, sin <b>/manager/instance/...</b>. En tu captura la instancia visible parece ser <b>Botrestaurante</b>. El token largo que aparece en la tarjeta no siempre es el nombre de instancia.</p>
+      <div class="evolution-actions">
+        <button class="ghost" type="button" id="stateBtn">Probar estado</button>
+        <button class="ghost" type="button" id="diagnoseBtn">Diagnosticar</button>
+        <button class="ghost" type="button" id="realQrBtn">Obtener QR real</button>
+        <button class="ghost" type="button" id="loadChatsBtn">Cargar chats</button>
+      </div>
+      <div class="real-qr" id="realQr">
+        <span>QR pendiente</span>
+      </div>
+      <div class="real-send">
+        <label>Numero destino
+          <input id="realNumber" type="tel" placeholder="51999999999">
+        </label>
+        <label>Mensaje real
+          <textarea id="realText" rows="3" placeholder="Escribe un mensaje para enviar por Evolution API"></textarea>
+        </label>
+        <button class="primary" type="button" id="realSendBtn">Enviar mensaje real</button>
+      </div>
+      <pre class="api-log" id="apiLog">Listo para conectar con Evolution API.</pre>
+    </section>
+
+    <section class="workspace">
+      <div class="panel inbox" id="inbox">
+        <div class="panel-head">
+          <div>
+            <span class="label">WhatsApp Inbox</span>
+            <h2>Conversaciones</h2>
+          </div>
+          <div class="segmented" role="tablist" aria-label="Filtro de conversaciones">
+            <button class="active" type="button">Todos</button>
+            <button type="button">Pendientes</button>
+            <button type="button">Bot</button>
+          </div>
+        </div>
+
+        <div class="conversation-layout">
+          <div class="thread-list" aria-label="Lista de conversaciones">
+            <button class="thread active" type="button">
+              <span class="avatar">R</span>
+              <span><b>Rosa Martinez</b><small>Pregunta por tallas y delivery</small></span>
+              <i>2m</i>
+            </button>
+            <button class="thread" type="button">
+              <span class="avatar blue">J</span>
+              <span><b>Jose Alvarez</b><small>Quiere separar una cita</small></span>
+              <i>8m</i>
+            </button>
+            <button class="thread" type="button">
+              <span class="avatar green">M</span>
+              <span><b>Mariela Quispe</b><small>Consulta precio mayorista</small></span>
+              <i>18m</i>
+            </button>
+            <button class="thread" type="button">
+              <span class="avatar pink">C</span>
+              <span><b>Carlos Vega</b><small>Solicita comprobante</small></span>
+              <i>35m</i>
+            </button>
+          </div>
+
+          <div class="chat-panel">
+            <div class="chat-header">
+              <div><strong>Rosa Martinez</strong><span>+51 987 654 321 · Tienda de ropa</span></div>
+              <span class="status">Interesada</span>
+            </div>
+            <div class="messages" id="messages">
+              <p class="msg client">Hola, ¿tienen polos oversize en talla M?</p>
+              <p class="msg bot">Hola Rosa. Si tenemos talla M en negro, blanco y beige. ¿Quieres ver precios y fotos?</p>
+              <p class="msg client">Si, tambien quiero saber si hacen delivery.</p>
+              <p class="msg agent">Delivery disponible en Lima. El costo depende del distrito. ¿A que zona seria?</p>
+            </div>
+            <div class="reply-box">
+              <input id="replyInput" type="text" value="Hola Rosa, te envio las opciones disponibles..." aria-label="Respuesta">
+              <button id="sendReplyBtn" type="button">Enviar</button>
+            </div>
+          </div>
+
+          <aside class="customer-card">
+            <span class="label">Ficha del cliente</span>
+            <h3>Rosa Martinez</h3>
+            <dl>
+              <div><dt>Telefono</dt><dd>+51 987 654 321</dd></div>
+              <div><dt>Etapa</dt><dd>Interesada</dd></div>
+              <div><dt>Ultima consulta</dt><dd>Tallas y delivery</dd></div>
+              <div><dt>Valor estimado</dt><dd>S/ 120</dd></div>
+            </dl>
+            <button type="button">Crear seguimiento</button>
+          </aside>
+        </div>
+      </div>
+
+      <div class="panel tasks-panel" id="tasks">
+        <div class="panel-head">
+          <div>
+            <span class="label">Seguimiento</span>
+            <h2>Tareas de hoy</h2>
+          </div>
+          <button class="ghost small" type="button" id="addTaskBtn">Agregar</button>
+        </div>
+        <div class="progress-card">
+          <div><b id="taskProgressText">0/4</b><span>completadas</span></div>
+          <meter id="taskProgress" min="0" max="4" value="0"></meter>
+        </div>
+        <ul class="task-list">
+          <li><input type="checkbox"> <span>Enviar catalogo a Rosa</span><b>10:30</b></li>
+          <li><input type="checkbox"> <span>Confirmar delivery de Mariela</span><b>12:00</b></li>
+          <li><input type="checkbox"> <span>Revisar flujo de precios</span><b>16:00</b></li>
+          <li><input type="checkbox"> <span>Actualizar preguntas frecuentes</span><b>18:00</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="panel" id="pipeline">
+        <div class="panel-head">
+          <div>
+            <span class="label">Pipeline</span>
+            <h2>Ventas por etapa</h2>
+          </div>
+          <div class="pipeline-summary">
+            <span>S/ 1,840 abiertos</span>
+            <span>6 oportunidades</span>
+          </div>
+        </div>
+        <div class="kanban">
+          <article>
+            <h3>Nuevo <span>20%</span></h3>
+            <div class="deal"><b>Jose Alvarez</b><span>Reserva · S/45</span><small>Responder antes de 30 min</small></div>
+            <div class="deal"><b>Ana Torres</b><span>Consulta stock · S/80</span><small>Enviar catalogo</small></div>
+          </article>
+          <article>
+            <h3>Interesado <span>45%</span></h3>
+            <div class="deal hot"><b>Rosa Martinez</b><span>Polos oversize · S/120</span><small>Quiere delivery</small></div>
+            <div class="deal hot"><b>Mariela Quispe</b><span>Mayorista · S/520</span><small>Enviar condiciones</small></div>
+          </article>
+          <article>
+            <h3>Seguimiento <span>70%</span></h3>
+            <div class="deal"><b>Carlos Vega</b><span>Comprobante · S/95</span><small>Postventa</small></div>
+            <div class="deal"><b>Valeria Soto</b><span>Pedido pendiente · S/240</span><small>Confirmar pago</small></div>
+          </article>
+          <article>
+            <h3>Cerrado <span>100%</span></h3>
+            <div class="deal won"><b>Lucia Rojas</b><span>Pedido confirmado · S/180</span><small>Entregar hoy</small></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel" id="contacts">
+        <div class="panel-head">
+          <div>
+            <span class="label">Clientes</span>
+            <h2>Base de contactos</h2>
+          </div>
+          <div class="table-actions">
+            <button class="ghost small" type="button">Importar</button>
+            <button class="ghost small" type="button">Exportar</button>
+          </div>
+        </div>
+        <table>
+          <thead><tr><th>Cliente</th><th>Origen</th><th>Etiqueta</th><th>Valor</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Rosa Martinez<small>+51 987 654 321</small></td><td>WhatsApp</td><td>Ropa</td><td>S/120</td><td><span class="pill">Interesada</span></td></tr>
+            <tr><td>Jose Alvarez<small>+51 946 112 340</small></td><td>WhatsApp</td><td>Cita</td><td>S/45</td><td><span class="pill blue">Nuevo</span></td></tr>
+            <tr><td>Mariela Quispe<small>+51 901 334 220</small></td><td>Instagram</td><td>Mayorista</td><td>S/520</td><td><span class="pill">Seguimiento</span></td></tr>
+            <tr><td>Carlos Vega<small>+51 933 761 110</small></td><td>WhatsApp</td><td>Postventa</td><td>S/95</td><td><span class="pill gray">Atendido</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid-3">
+      <div class="panel" id="reports">
+        <span class="label">Reportes</span>
+        <h2>Consultas frecuentes</h2>
+        <div class="report-mini">
+          <article><b>406</b><span>mensajes</span></article>
+          <article><b>29</b><span>chats</span></article>
+          <article><b>68%</b><span>respondido por bot</span></article>
+        </div>
+        <div class="bars-report">
+          <span style="--w:86%"><b>Precios</b><i>86</i></span>
+          <span style="--w:74%"><b>Stock</b><i>74</i></span>
+          <span style="--w:61%"><b>Delivery</b><i>61</i></span>
+          <span style="--w:48%"><b>Horarios</b><i>48</i></span>
+        </div>
+      </div>
+      <div class="panel" id="automations">
+        <span class="label">Automatizaciones</span>
+        <h2>Reglas de respuesta</h2>
+        <form class="rule-form" id="ruleForm">
+          <label>Palabra clave <input id="keywordInput" type="text" placeholder="precio, delivery, horario"></label>
+          <label>Respuesta automatica <textarea id="responseInput" rows="3" placeholder="Escribe la respuesta que enviara el bot"></textarea></label>
+          <button class="primary" type="submit">Guardar regla</button>
+        </form>
+        <ul class="rule-list" id="ruleList" aria-label="Reglas activas"></ul>
+        <div class="simulator">
+          <span class="label">Simulador</span>
+          <textarea id="incomingInput" rows="3" placeholder="Escribe un mensaje entrante: precio, delivery, horario..."></textarea>
+          <button class="ghost" type="button" id="simulateBtn">Probar mensaje entrante</button>
+        </div>
+      </div>
+      <div class="panel" id="settings">
+        <span class="label">Configuracion</span>
+        <h2>Negocio</h2>
+        <div class="settings-list">
+          <div><b>Canal</b><span id="settingsChannel">WhatsApp demo desconectado</span></div>
+          <div><b>Horario</b><span>Lun-Sab · 9:00 a 20:00</span></div>
+          <div><b>Equipo</b><span>2 agentes</span></div>
+          <div><b>Plan</b><span>Inicial · S/80</span></div>
+        </div>
+        <form class="business-form">
+          <label>Nombre comercial <input type="text" value="Servicio de comida Taqrico"></label>
+          <label>Rubro <input type="text" value="Restaurante / comida"></label>
+          <label>Mensaje fuera de horario <textarea rows="3">Gracias por escribir. Estamos fuera de horario, pero te responderemos apenas volvamos a atender.</textarea></label>
+          <button class="primary" type="button">Guardar cambios</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
