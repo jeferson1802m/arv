@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta | ARV Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="register-container">
+        <section class="register-left">
+            <div class="left-content">
+                <div class="brand">
+                    <img src="/logo.png" alt="ARV Intelligence Logo" class="brand-logo" />
+                    <span class="brand-text">ARV Intelligence</span>
+                </div>
+                
+                <div class="welcome-text">
+                    <h1>¡¡Hola, Bienvenido!!</h1>
+                    <p>Automatiza conversaciones, conecta múltiples cuentas</p>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Chatbots IA</h3>
+                            <p>Gestión avanzada de flujos automáticos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Multicanal</h3>
+                            <p>Conecta tus canales en un solo lugar.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Analytics</h3>
+                            <p>Análisis detallado de conversaciones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/login/" class="btn-outline">Inicia Sesión</a>
+
+                <div class="footer-security">
+                    <span class="security-badge">
+                        <span class="dot"></span> SISTEMA VERIFICADO Y SEGURO
+                    </span>
+                    <p class="copyright">© 2026 ARV Intelligence CRM</p>
+                </div>
+            </div>
+            
+            <div class="bg-grid"></div>
+        </section>
+
+        <section class="register-right">
+            <div class="register-form-wrapper">
+                <div class="form-header">
+                    <h2>Crear Cuenta</h2>
+                    <p>Completa tus datos para comenzar</p>
+                </div>
+                
+                <form class="register-form" action="/dashboard/" method="GET">
+                    
+                    <div class="input-group full-width plan-select-group">
+                        <label>PLAN SELECCIONADO</label>
+                        <select id="plan" name="plan" required class="plan-select">
+                            <option value="personalizado" selected>Profesional — S/100 Plan personalizado</option>
+                            <option value="basico">Básico — S/60 USD/mes</option>
+                            <option value="inicial">Inicial — S/80 USD/mes</option>
+                        </select>
+                        <div class="select-indicator"></div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="company" placeholder="Nombre de la Empresa" required>
+                            <span class="input-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+                            </span>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="fullname" placeholder="Nombre Completo" required>
+                            <span class="input-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <input type="email" id="email" placeholder="Correo Electrónico" required>
+                        <span class="input-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </span>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group country-select-group">
+                            <label>País</label>
+                            <div class="select-wrapper">
+                                <span class="flag-icon">PE</span>
+                                <select id="country" name="country">
+                                    <option value="PE">Perú +51</option>
+                                    <option value="CO">Colombia +57</option>
+                                    <option value="MX">México +52</option>
+                                    <option value="CL">Chile +56</option>
+                                    <option value="AR">Argentina +54</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" id="whatsapp" placeholder="WhatsApp" required style="margin-top: 18px;">
+                            <span class="input-icon" style="bottom: 12px; top: auto;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="password" id="password" placeholder="Contraseña" required>
+                            <button type="button" class="input-icon toggle-password" aria-label="Mostrar contraseña">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="confirm_password" placeholder="Confirmar Contraseña" required>
+                            <button type="button" class="input-icon toggle-password" aria-label="Mostrar contraseña">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Comenzar Ahora →</button>
+                </form>
+
+                <p class="login-link">¿Ya tienes cuenta? <a href="/login/">Inicia Sesión</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Capturar plan de la URL si existe
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+        if (plan) {
+            const select = document.getElementById('plan');
+            for(let i=0; i < select.options.length; i++) {
+                if(select.options[i].value === plan) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
