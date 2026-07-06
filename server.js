@@ -171,8 +171,22 @@ async function handleApi(req, res, pathname) {
 
 function serveStatic(req, res, pathname) {
   let filePath = decodeURIComponent(pathname);
-  if (filePath === "/") filePath = "/index.html";
-  if (filePath.endsWith("/")) filePath += "index.html";
+  
+  if (filePath === "/") {
+    filePath = "/index.html";
+  } else if (filePath.endsWith("/")) {
+    filePath += "index.html";
+  } else {
+    try {
+      const stats = fs.statSync(path.resolve(root, `.${filePath}`));
+      if (stats.isDirectory()) {
+        res.writeHead(301, { "Location": filePath + "/" });
+        return res.end();
+      }
+    } catch (e) {
+      // Ignorar errores de statSync (el archivo podría no existir)
+    }
+  }
 
   const absolute = path.resolve(root, `.${filePath}`);
   if (!absolute.startsWith(root)) {

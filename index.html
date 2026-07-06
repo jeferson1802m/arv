@@ -14,9 +14,7 @@
   <header class="site-header">
     <nav class="nav-shell" aria-label="Principal">
       <a class="brand" href="/" aria-label="ARV Intelligence">
-        <span class="brand-mark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.8 2.8 5.4 13.1h5.4l-1 8.1 8.8-11h-5.7l.9-7.4Z"/></svg>
-        </span>
+        <img src="/logo.png" alt="" style="height: 36px; width: auto; object-fit: contain; background-color: #fff; border-radius: 50%; padding: 2px;" />
         <span>ARV Intelligence</span>
       </a>
       <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
@@ -31,7 +29,7 @@
       </div>
       <div class="nav-actions">
         <button class="lang" type="button" aria-label="Cambiar idioma"><span class="flag-es"></span> ES <span class="chevron">⌄</span></button>
-        <a class="login" href="./dashboard/">Acceder</a>
+        <a class="login" href="/login/">Acceder</a>
       </div>
     </nav>
   </header>
@@ -161,13 +159,29 @@
       <div class="container">
         <div class="section-head">
           <span class="label">Precios</span>
-          <h2>Planes segun el nivel de automatizacion</h2>
-          <p>Empieza con respuestas automaticas, agrega gestion de clientes y escala hacia una atencion con IA personalizada.</p>
+          <h2>Un plan diseñado para tu negocio</h2>
+          <p>Obten respuestas automaticas, gestion de clientes y atencion con IA personalizada en un solo paquete.</p>
         </div>
-        <div class="pricing-grid">
-          <article class="plan"><span class="plan-kicker">Automatizacion basica</span><h3>Basico</h3><div class="price">S/60</div><p>Por mes</p><ul><li>Chatbot basico para WhatsApp</li><li>Respuestas automaticas a preguntas frecuentes</li><li>Horarios, ubicacion, precios y datos del negocio</li><li>Configuracion inicial del flujo</li><li>Soporte basico por WhatsApp</li><li>Sin IA avanzada</li></ul><a href="/register?plan=basico">Elegir Plan</a></article>
-          <article class="plan featured"><span class="plan-kicker">Gestion y seguimiento</span><h3>Inicial</h3><div class="price">S/80</div><p>Por mes</p><ul><li>Todo lo del plan Basico</li><li>CRM integrado para ordenar clientes</li><li>Seguimiento de interesados</li><li>Reportes simples de consultas frecuentes</li><li>Asesoria para usar mejor el sistema</li><li>Clasificacion basica de mensajes</li></ul><a href="/register?plan=inicial">Elegir Plan</a></article>
-          <article class="plan"><span class="plan-kicker">IA personalizada</span><h3>Premium</h3><div class="price">S/100</div><p>Por mes</p><ul><li>Todo lo del plan Inicial</li><li>Asistente con IA para respuestas mas naturales</li><li>Personalizacion avanzada por rubro</li><li>Mejora continua del flujo segun consultas reales</li><li>Soporte inmediato</li><li>Asesorias para escalabilidad</li></ul><a href="/register?plan=premium">Elegir Plan</a></article>
+        <div class="pricing-grid" style="display: flex; justify-content: center; max-width: 600px; margin: 0 auto;">
+          <article class="plan featured" style="width: 100%;">
+            <span class="plan-kicker">WHATSAPP QR</span>
+            <h3>Profesional</h3>
+            <div class="price">S/100</div>
+            <p>Por mes</p>
+            <ul>
+              <li>1 WhatsApp Business conectado</li>
+              <li>Chatbot personalizado</li>
+              <li>Generador de flujos conversacionales</li>
+              <li>Palabras clave</li>
+              <li>Plantillas de respuestas</li>
+              <li>Gestión de contactos</li>
+              <li>Dashboard básico</li>
+              <li>Reportes de conversaciones</li>
+              <li>Soporte técnico</li>
+              <li>Acompañamiento inicial</li>
+            </ul>
+            <a href="/register?plan=profesional">CONTRATAR PLAN</a>
+          </article>
         </div>
       </div>
     </section>
@@ -180,8 +194,8 @@
           <p>Resolvemos tus dudas mas comunes.</p>
         </div>
         <div class="faq-list">
-          <details open><summary>¿Que plan conviene para empezar?</summary><p>El plan Basico sirve para automatizar respuestas frecuentes. El Inicial conviene si quieres ordenar clientes con CRM y seguimiento. El Premium es para negocios que quieren sumar IA personalizada.</p><a href="#contact">Consultar →</a></details>
-          <details><summary>¿En que plan se incluye IA?</summary><p>La IA personalizada se incluye en el plan Premium. En el plan Inicial se puede trabajar una clasificacion basica de mensajes, pero no respuestas avanzadas con IA.</p><a href="#contact">Consultar →</a></details>
+          <details open><summary>¿Qué incluye el plan único?</summary><p>El plan incluye todo lo necesario para automatizar tu WhatsApp: chatbot inteligente, integración con CRM, respuestas automáticas con IA, soporte continuo y mejoras basadas en interacciones reales.</p><a href="#contact">Consultar →</a></details>
+          <details><summary>¿Tienen otros planes o costos ocultos?</summary><p>No. Tenemos un único plan transparente de S/100 al mes que se adapta a las necesidades de tu MYPE, sin costos adicionales por funciones básicas ni límite artificial de mensajes.</p><a href="#contact">Consultar →</a></details>
           <details><summary>¿ARV Intelligence ya trabaja con grandes empresas?</summary><p>No. El proyecto esta iniciando y se enfoca primero en pilotos con MYPES para validar el servicio y mejorarlo con casos reales.</p><a href="#contact">Consultar →</a></details>
           <details><summary>¿Necesito saber programar?</summary><p>No. La configuracion se realiza de forma guiada. El negocio solo debe compartir sus preguntas frecuentes, productos, horarios y datos de atencion.</p><a href="#contact">Consultar →</a></details>
         </div>
@@ -196,10 +210,10 @@
         <div class="cta-stats">
           <div><b>70%</b><span>Usan WhatsApp</span></div>
           <div><b>90%</b><span>Interes en probar</span></div>
-          <div><b>S/60</b><span>Plan Basico</span></div>
-          <div><b>S/80</b><span>Plan Inicial</span></div>
+          <div><b>100%</b><span>Automatizacion</span></div>
+          <div><b>S/100</b><span>Plan Único</span></div>
         </div>
-        <p class="pick">Elige un plan inicial o solicita un piloto</p>
+        <p class="pick">Solicita un piloto hoy mismo</p>
         <a class="btn primary" href="/register">Solicitar informacion</a>
         <div class="cta-notes"><span>Enfoque en MYPES</span><span>Sin contratos largos</span><span>Implementacion guiada</span></div>
         <div class="avatars"><span>M</span><span>A</span><span>R</span><span>J</span></div>
@@ -210,7 +224,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <a class="brand" href="/"><span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.8 2.8 5.4 13.1h5.4l-1 8.1 8.8-11h-5.7l.9-7.4Z"/></svg></span><span>ARV Intelligence</span></a>
+      <a class="brand" href="/"><img src="/logo.png" alt="" style="height: 36px; width: auto; object-fit: contain; background-color: #fff; border-radius: 50%; padding: 2px;" /><span>ARV Intelligence</span></a>
       <div><a href="/pages/terminos-y-condiciones">Terminos de uso</a><a href="/pages/politica-de-privacidad">Privacidad</a><a href="#contact">Soporte</a></div>
       <p>© 2026 ARV Intelligence. Todos los derechos reservados.</p>
     </div>
